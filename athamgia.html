@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head> 
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tham gia ngay - Câu lạc bộ Cảnh quan thiên nhiên thế giới</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+	<style>
+		* { 
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html, body {	
+			width: 100%;
+			height: 100%;
+			font-family: 'Playfair Display', serif;
+			background-color: #000;
+			color: #ffffff;
+			overflow-x: hidden;
+		}
+
+		/* Lớp Video Nền Xoay Vòng */
+		.video-container {
+			position: fixed;
+			inset: 0;
+			width: 100vw;
+			height: 100vh;
+			z-index: 0;
+			overflow: hidden;
+		}
+
+		.bg-video { 
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+			filter: brightness(0.4) blur(8px);
+			transform: scale(1.05);
+		}
+
+		.bg-video.active { opacity: 1; }
+
+		/* Khung Form Đăng Ký */
+		.form-container {
+			max-width: 650px;
+			margin: 3rem auto;
+			padding: 2.5rem;
+			background: rgba(255, 255, 255, 0.05);
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+			border-radius: 24px;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+			position: relative;
+			z-index: 2;
+		}
+
+		.back-home {
+			display: inline-block;
+			color: rgba(255, 255, 255, 0.8);
+			text-decoration: none;
+			font-size: 0.95rem;
+			margin-bottom: 1.5rem;
+			transition: color 0.2s;
+		}
+
+		.back-home:hover {
+			color: #ffffff;
+		}
+
+		.form-title {
+			font-size: 2.2rem;
+			margin-bottom: 0.5rem;
+			color: #ffffff;
+			text-align: center;
+		}
+
+		.form-subtitle {
+			font-size: 0.95rem;
+			color: rgba(255, 255, 255, 0.7);
+			text-align: center;
+			margin-bottom: 2rem;
+			font-family: system-ui, sans-serif;
+		}
+
+		/* Định dạng các trường nhập dữ liệu theo Form HTML */
+		.form-group {
+			margin-bottom: 1.2rem;
+		}
+
+		.form-group label {
+			display: block;
+			font-size: 0.9rem;
+			color: rgba(255, 255, 255, 0.9);
+			margin-bottom: 0.4rem;
+			font-family: system-ui, sans-serif;
+		}
+
+		.form-group input, 
+		.form-group textarea {
+			width: 100%;
+			padding: 0.8rem 1rem;
+			background: rgba(255, 255, 255, 0.07);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 10px;
+			color: #fff;
+			font-size: 0.95rem;
+			font-family: system-ui, sans-serif;
+			outline: none;
+			transition: border-color 0.2s, background 0.2s;
+		}
+
+		.form-group input:focus, 
+		.form-group textarea:focus {
+			border-color: rgba(255, 255, 255, 0.6);
+			background: rgba(255, 255, 255, 0.12);
+		}
+
+		.btn-submit {
+			width: 100%;
+			padding: 0.9rem;
+			background: rgba(255, 255, 255, 0.2);
+			border: 1px solid rgba(255, 255, 255, 0.4);
+			border-radius: 9999px;
+			color: #fff;
+			font-size: 1rem;
+			font-weight: 600;
+			cursor: pointer;
+			margin-top: 1rem;
+			transition: background 0.2s, transform 0.2s;
+			font-family: system-ui, sans-serif;
+		}
+
+		.btn-submit:hover {
+			background: rgba(255, 255, 255, 0.35);
+			transform: translateY(-2px);
+		}
+
+		@media (max-width: 768px) {
+			.form-container {
+				margin: 1.5rem;
+				padding: 1.5rem;
+			}
+		}
+	</style>		
+</head>
+<body>
+
+	<!-- 4 Video nền xoay vòng mờ tối -->
+	<div class="video-container">
+		<video class="bg-video active" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_081127_0992a171-d3c6-4978-8213-0ec5df8b6d63.mp4" type="video/mp4">
+		</video>
+		<video class="bg-video" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_092026_dd05b805-ea0f-40b2-8c52-332b88502592.mp4" type="video/mp4">
+		</video>
+		<video class="bg-video" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_081042_df7202bf-bd80-4b2b-bbc6-1f09ba2870e9.mp4" type="video/mp4">
+		</video>
+		<video class="bg-video" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_080959_4cac5234-3573-464e-a5b7-76b94b8a7d61.mp4" type="video/mp4">
+		</video>
+	</div>
+
+	<!-- Khung Biểu Mẫu Đăng Ký -->
+	<div class="form-container">
+		<a href="project_1.html" class="back-home">&larr; Quay lại trang chủ</a>
+		
+		<h1 class="form-title">Đăng Ký Tham Gia</h1>
+		<p class="form-subtitle">Điền thông tin bên dưới để trở thành thành viên của Câu lạc bộ</p>
+		
+		<form action="#" method="POST">
+			<div class="form-group">
+				<label for="fullname">Họ và tên:</label>
+				<input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên của bạn" required>
+			</div>
+
+			<div class="form-group">
+				<label for="dob">Ngày tháng năm sinh:</label>
+				<input type="date" id="dob" name="dob" required>
+			</div>
+
+			<div class="form-group">
+				<label for="email">Email đăng ký:</label>
+				<input type="email" id="email" name="email" placeholder="Ví dụ: name@example.com" required>
+			</div>
+
+			<div class="form-group">
+				<label for="hobbies">Sở thích cá nhân:</label>
+				<textarea id="hobbies" name="hobbies" rows="3" placeholder="Chia sẻ về sở thích nhiếp ảnh, du lịch hoặc bảo tồn thiên nhiên của bạn..."></textarea>
+			</div>
+
+			<button type="submit" class="btn-submit">Gửi thông tin đăng ký</button>
+		</form>
+	</div>
+
+	<!-- Script tự động chuyển đổi giữa 4 video nền -->
+	<script>
+		const videos = document.querySelectorAll('.bg-video');
+		let currentIndex = 0;
+		const timeInterval = 5000;
+
+		function playNextVideo() {
+			videos[currentIndex].classList.remove('active');
+			currentIndex = (currentIndex + 1) % videos.length;
+			videos[currentIndex].classList.add('active');
+		}
+
+		setInterval(playNextVideo, timeInterval);
+	</script>
+</body>
+</html>

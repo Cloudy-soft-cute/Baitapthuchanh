@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head> 
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Giới thiệu - Câu lạc bộ Cảnh quan thiên nhiên thế giới</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+	<style>
+		* { 
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html, body {	
+			width: 100%;
+			height: 100%;
+			font-family: 'Playfair Display', serif;
+			background-color: #000;
+			color: #ffffff;
+			overflow-x: hidden;
+		}
+
+		/* Lớp Video Nền Xoay Vòng */
+		.video-container {
+			position: fixed;
+			inset: 0;
+			width: 100vw;
+			height: 100vh;
+			z-index: 0;
+			overflow: hidden;
+		}
+
+		.bg-video { 
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+			filter: brightness(0.4) blur(8px); /* Làm tối và mờ video nền */
+			transform: scale(1.05);
+		}
+
+		.bg-video.active { opacity: 1; }
+
+		/* Khung Nội Dung Giới Thiệu */
+		.about-container {
+			max-width: 1000px;
+			margin: 4rem auto;
+			padding: 2.5rem;
+			background: rgba(255, 255, 255, 0.05);
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+			border-radius: 24px;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+			position: relative;
+			z-index: 2;
+		}
+
+		.back-home {
+			display: inline-block;
+			color: rgba(255, 255, 255, 0.8);
+			text-decoration: none;
+			font-size: 0.95rem;
+			margin-bottom: 2rem;
+			transition: color 0.2s;
+		}
+
+		.back-home:hover {
+			color: #ffffff;
+		}
+
+		.about-grid {
+			display: flex;
+			gap: 3rem;
+			align-items: center;
+		}
+
+		.about-content {
+			flex: 1.2;
+		}
+
+		.about-title {
+			font-size: 2.5rem;
+			margin-bottom: 1.5rem;
+			color: #ffffff;
+		}
+
+		.about-text {
+			font-size: 1rem;
+			line-height: 1.8;
+			color: rgba(255, 255, 255, 0.85);
+			margin-bottom: 1.2rem;
+		}
+
+		.about-image-box {
+			flex: 1;
+			border-radius: 16px;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+		}
+
+		.about-image-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		@media (max-width: 768px) {
+			.about-grid {
+				flex-direction: column;
+			}
+			.about-container {
+				margin: 1.5rem;
+				padding: 1.5rem;
+			}
+		}
+	</style>		
+</head>
+<body>
+
+	<!-- 4 Video nền xoay vòng mờ tối -->
+	<div class="video-container">
+		<video class="bg-video active" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_081127_0992a171-d3c6-4978-8213-0ec5df8b6d63.mp4" type="video/mp4">
+		</video>
+		<video class="bg-video" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_092026_dd05b805-ea0f-40b2-8c52-332b88502592.mp4" type="video/mp4">
+		</video>
+		<video class="bg-video" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_081042_df7202bf-bd80-4b2b-bbc6-1f09ba2870e9.mp4" type="video/mp4">
+		</video>
+		<video class="bg-video" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_080959_4cac5234-3573-464e-a5b7-76b94b8a7d61.mp4" type="video/mp4">
+		</video>
+	</div>
+
+	<!-- Khung chứa thông tin -->
+	<div class="about-container">
+		<a href="project_1.html" class="back-home">&larr; Quay lại trang chủ</a>
+		
+		<div class="about-grid">
+			<div class="about-content">
+				<h1 class="about-title">Lịch Sử Hình Thành</h1>
+				<p class="about-text">
+					Được thành lập từ niềm đam mê chinh phục và lưu giữ những khoảnh khắc tuyệt mỹ của thiên nhiên, **Câu lạc bộ Cảnh quan thiên nhiên thế giới (Terra)** là nơi kết nối những tâm hồn yêu thiên nhiên, nhiếp ảnh và bảo tồn môi trường.
+				</p>
+				<p class="about-text">
+					Sứ mệnh của chúng tôi là lan tỏa vẻ đẹp kỳ vĩ của Trái Đất thông qua những ống kính chân thực, từ đó nâng cao ý thức cộng đồng cùng chung tay bảo vệ môi trường tự nhiên.
+				</p>
+			</div>
+			<div class="about-image-box">
+				<img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Cảnh quan thiên nhiên">
+			</div>
+		</div>
+	</div>
+
+	<!-- Script tự động chuyển đổi giữa 4 video nền -->
+	<script>
+		const videos = document.querySelectorAll('.bg-video');
+		let currentIndex = 0;
+		const timeInterval = 5000; // 5 giây đổi video một lần
+
+		function playNextVideo() {
+			videos[currentIndex].classList.remove('active');
+			currentIndex = (currentIndex + 1) % videos.length;
+			videos[currentIndex].classList.add('active');
+		}
+
+		setInterval(playNextVideo, timeInterval);
+	</script>
+</body>
+</html>

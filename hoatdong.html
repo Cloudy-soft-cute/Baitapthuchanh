@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head> 
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hoạt động - Câu lạc bộ Cảnh quan thiên nhiên thế giới</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+	<style>
+		* { 
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html, body {	
+			width: 100%;
+			height: 100%;
+			font-family: 'Playfair Display', serif;
+			background-color: #000;
+			color: #ffffff;
+			overflow-x: hidden;
+		}
+
+		/* Lớp Video Nền Xoay Vòng */
+		.video-container {
+			position: fixed;
+			inset: 0;
+			width: 100vw;
+			height: 100vh;
+			z-index: 0;
+			overflow: hidden;
+		}
+
+		.bg-video { 
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+			filter: brightness(0.4) blur(8px); /* Làm tối và mờ video nền */
+			transform: scale(1.05);
+		}
+
+		.bg-video.active { opacity: 1; }
+
+		/* Khung Nội Dung Hoạt Động */
+		.activity-container {
+			max-width: 1000px;
+			margin: 4rem auto;
+			padding: 2.5rem;
+			background: rgba(255, 255, 255, 0.05);
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+			border-radius: 24px;
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+			position: relative;
+			z-index: 2;
+		}
+
+		.back-home {
+			display: inline-block;
+			color: rgba(255, 255, 255, 0.8);
+			text-decoration: none;
+			font-size: 0.95rem;
+			margin-bottom: 2rem;
+			transition: color 0.2s;
+		}
+
+		.back-home:hover {
+			color: #ffffff;
+		}
+
+		.activity-grid {
+			display: flex;
+			gap: 3rem;
+			align-items: center;
+		}
+
+		.activity-content {
+			flex: 1.2;
+		}
+
+		.activity-title {
+			font-size: 2.5rem;
+			margin-bottom: 1.5rem;
+			color: #ffffff;
+		}
+
+		.activity-steps {
+			display: flex;
+			flex-direction: column;
+			gap: 1.2rem;
+		}
+
+		.step-card {
+			background: rgba(255, 255, 255, 0.04);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 14px;
+			padding: 1.2rem;
+			display: flex;
+			align-items: flex-start;
+			gap: 1rem;
+		}
+
+		.step-number {
+			background: rgba(255, 255, 255, 0.2);
+			color: #fff;
+			font-weight: bold;
+			width: 32px;
+			height: 32px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			font-size: 0.9rem;
+		}
+
+		.step-detail h3 {
+			font-size: 1.1rem;
+			color: #fff;
+			margin-bottom: 0.3rem;
+		}
+
+		.step-detail p {
+			font-size: 0.92rem;
+			line-height: 1.6;
+			color: rgba(255, 255, 255, 0.8);
+		}
+
+		.activity-image-box {
+			flex: 1;
+			border-radius: 16px;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+		}
+
+		.activity-image-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		@media (max-width: 768px) {
+			.activity-grid {
+				flex-direction: column;
+			}
+			.activity-container {
+				margin: 1.5rem;
+				padding: 1.5rem;
+			}
+		}
+	</style>		
+</head>
+<body>
+
+	<!-- 4 Video nền xoay vòng mờ tối -->
+	<div class="video-container">
+		<video class="bg-video active" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_081127_0992a171-d3c6-4978-8213-0ec5df8b6d63.mp4" type="video/mp4">
+		</video>
+		<video class="bg-video" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_092026_dd05b805-ea0f-40b2-8c52-332b88502592.mp4" type="video/mp4">
+		</video>
+		<video class="bg-video" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_081042_df7202bf-bd80-4b2b-bbc6-1f09ba2870e9.mp4" type="video/mp4">
+		</video>
+		<video class="bg-video" autoplay muted loop playsinline>
+			<source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_080959_4cac5234-3573-464e-a5b7-76b94b8a7d61.mp4" type="video/mp4">
+		</video>
+	</div>
+
+	<!-- Khung chứa thông tin hoạt động -->
+	<div class="activity-container">
+		<a href="project_1.html" class="back-home">&larr; Quay lại trang chủ</a>
+		
+		<div class="activity-grid">
+			<div class="activity-content">
+				<h1 class="activity-title">Cách Thức Hoạt Động</h1>
+				
+				<div class="activity-steps">
+					<div class="step-card">
+						<div class="step-number">1</div>
+						<div class="step-detail">
+							<h3>Sinh hoạt định kỳ hàng tuần</h3>
+							<p>Mỗi tuần, sinh hoạt CLB diễn ra 1 buổi để các thành viên cùng nhau họp mặt và kết nối đam mê.</p>
+						</div>
+					</div>
+
+					<div class="step-card">
+						<div class="step-number">2</div>
+						<div class="step-detail">
+							<h3>Trình bày & Thuyết trình kỳ quan</h3>
+							<p>Các thành viên giới thiệu tư liệu, hình ảnh đã sưu tầm trước đó và thuyết trình ngắn gọn về vẻ đẹp, giá trị của kỳ quan thiên nhiên tương ứng.</p>
+						</div>
+					</div>
+
+					<div class="step-card">
+						<div class="step-number">3</div>
+						<div class="step-detail">
+							<h3>Trao đổi & Bình chọn tuần</h3>
+							<p>Cả nhóm thảo luận, chia sẻ góc nhìn và tiến hành bình chọn ra tác phẩm sưu tầm đẹp nhất cùng bài thuyết trình ấn tượng nhất trong tuần.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="activity-image-box">
+				<img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80" alt="Hoạt động câu lạc bộ">
+			</div>
+		</div>
+	</div>
+
+	<!-- Script tự động chuyển đổi giữa 4 video nền -->
+	<script>
+		const videos = document.querySelectorAll('.bg-video');
+		let currentIndex = 0;
+		const timeInterval = 5000;
+
+		function playNextVideo() {
+			videos[currentIndex].classList.remove('active');
+			currentIndex = (currentIndex + 1) % videos.length;
+			videos[currentIndex].classList.add('active');
+		}
+
+		setInterval(playNextVideo, timeInterval);
+	</script>
+</body>
+</html>

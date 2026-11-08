@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head> 
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Câu lạc bộ Cảnh quan thiên nhiên thế giới </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Great+Vibes&family=Lilita+One&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+	<style>
+		* { margin: 0;
+    		padding: 0;
+    		box-sizing: border-box;}
+
+		  {	width: 100%;
+			height: 100%;
+			font-family: system-ui,'Playfair Display', serif;
+			background-color: #000;
+			color: #ffffff;
+			overflow: hidden;;}
+	
+
+    	.hero-section { position: relative;
+    					width: 100%;
+    					height: 100vh;
+    					overflow: hidden;
+    					background: #000;}
+    	.video-container { position: absolute;
+						   inset: 0;
+    					   width: 100%;
+    					   height: 100%;
+    					   z-index: 0;}
+
+		.bg-video { position: absolute;
+    				top: 0;
+    				left: 0;
+    				width: 100%;
+    				height: 100%;
+    				object-fit: cover;
+    				opacity: 0;
+    				transition: opacity 1s ease-in-out;}
+
+		.bg-video.active { opacity: 1; }
+   
+		.overlay-image { position: absolute;
+    					 inset: 0;
+    					 background-image: url('https://soft-zoom-63098134.figma.site/_assets/v11/0b4a435b2df2747593c43d7a1c9b4578f7d8d90c.png');
+    					 background-size: cover;
+    					 background-position: center;
+    					 z-index: 1;
+    					 pointer-events: none;
+    					 transform: scale(1.03);
+    					 animation: trainBob 3s ease-in-out infinite; }
+
+		@keyframes trainBob {0%, 100% {transform: translateY(0) scale(1.03);} 
+							 50% {transform: translateY(-6px) scale(1.03);} }
+
+/* Hiệu ứng Kính Mờ (Liquid Glass) */
+		.liquid-glass { background: rgba(255, 255, 255, 0.01);
+    					background-blend-mode: luminosity;
+    					backdrop-filter: blur(4px);
+    					-webkit-backdrop-filter: blur(4px);
+    					border: none;
+    					box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    					position: relative;
+    					overflow: hidden; }
+
+		.liquid-glass::before { content: '';
+    							position: absolute;
+    							inset: 0;
+    							border-radius: inherit;
+    							padding: 1.4px;
+   					 				background: linear-gradient(180deg,
+    							    rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+    							    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+    							    rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+    							-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    							-webkit-mask-composite: xor;
+    							mask-composite: exclude;
+    							pointer-events: none;}
+
+	 
+    	/* Lớp Nội Dung (z-index 2) */
+        .content-layer { position: relative;
+                         z-index: 2;
+                         width: 100%;
+                         height: 100%;
+                         display: flex;
+                         flex-direction: column;
+                         justify-content: space-between;
+                         padding: 2rem; }
+        
+        /* Thanh Navigation */
+        .navbar { display: flex;
+                  justify-content: space-between;
+                  align-items: center; }
+        .nav-links { display: flex;
+                     align-items: center;
+                     gap: 1.5rem;
+                     padding: 0.5rem 1.5rem;
+                     border-radius: 9999px; }
+        
+        .nav-links a { color: rgba(255, 255, 255, 0.9);
+                       text-decoration: none;
+                       font-size: 0.875rem;
+                       transition: color 0.2s; }
+        
+        .nav-links a:hover { color: #fff; }
+        /* Phần Hero Content ở giữa */
+        .hero-content { display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                        gap: 1.5rem;
+                        max-width: 56rem;
+                        margin: 0 auto; }
+        
+        .badge { padding: 0.35rem 1.25rem;
+                 border-radius: 9999px;
+                 font-size: 0.875rem;
+                 color: rgba(255, 255, 255, 0.9); }
+        
+        .hero-title { font-family: 'Great Vibes', cursive;
+        			  font-size: 4.5rem;
+        			  line-height: 1.1;
+        			  font-weight: 400;
+        			  color: #ffffff; /* Đảm bảo màu chữ luôn trắng tinh */
+        			  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Thêm bóng chữ để không bị lấp bởi nền */ }
+        
+        .hero-subtext { max-width: 37rem;
+                        font-size: 1rem;
+                        line-height: 1.6;
+                        color: rgba(255, 255, 255, 0.8); }
+    </style>		
+</head>
+<body>
+	
+	<section class="hero-section">
+        
+        <!-- Lớp Video Nền -->
+        <div class="video-container">
+            <video class="bg-video active" autoplay muted loop playsinline>
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_081127_0992a171-d3c6-4978-8213-0ec5df8b6d63.mp4" type="video/mp4">
+            </video>
+            <video class="bg-video" autoplay muted loop playsinline>
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_092026_dd05b805-ea0f-40b2-8c52-332b88502592.mp4" type="video/mp4">
+            </video>
+            <video class="bg-video" autoplay muted loop playsinline>
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_081042_df7202bf-bd80-4b2b-bbc6-1f09ba2870e9.mp4" type="video/mp4">
+            </video>
+            <video class="bg-video" autoplay muted loop playsinline>
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260702_080959_4cac5234-3573-464e-a5b7-76b94b8a7d61.mp4" type="video/mp4">
+            </video>
+        </div>
+	<div class="overlay-image"></div>
+	<div class="content-layer">
+            
+            <!-- Thanh điều hướng (Navigation) -->
+            <nav class="navbar">
+                <div class="logo">Terra</div>
+                <div class="nav-links liquid-glass">
+                    <a href="gioithieu.html">Giới thiệu</a>
+                    <a href="hoatdong.html">Hoạt động</a>
+                    <a href="thamgia.html" class="btn-solid">Tham gia ngay</a>
+                </div>
+            </nav>
+
+            <!-- Nội dung chính (Hero Content) -->
+            <div class="hero-content">
+                <div class="badge liquid-glass">
+                    Khám phá vẻ đẹp kỳ vĩ của thiên nhiên toàn cầu
+                </div>
+                
+                <h1 class="hero-title">
+                    Hòa mình vào kỳ quan thiên nhiên 
+                </h1>
+                
+                <p class="hero-subtext">
+                    Nơi quy tụ những học sinh yêu thích cảnh quan, nhiếp ảnh và bảo tồn thiên nhiên thế giới. Cùng nhau bảo vệ vẻ đẹp xanh của Trái Đất.
+                </p>
+    </div>
+
+<div></div>
+        </div>
+    </section>
+<script>
+        const videos = document.querySelectorAll('.bg-video');
+        let currentIndex = 0;
+        const timeInterval = 5000; // Thời gian hiển thị mỗi video (5000 mili giây = 5 giây)
+
+        function playNextVideo() {
+            // Bỏ class active của video hiện tại
+            videos[currentIndex].classList.remove('active');
+            
+            // Chuyển sang video tiếp theo (nếu hết 4 video thì quay lại video đầu tiên số 0)
+            currentIndex = (currentIndex + 1) % videos.length;
+            
+            // Thêm class active cho video mới để chạy hiệu ứng mờ dần
+            videos[currentIndex].classList.add('active');
+        }
+
+        // Thiết lập bộ đếm thời gian tự động đổi video
+        setInterval(playNextVideo, timeInterval);
+  </script>
+</body>
+</html>	
+
